@@ -22,8 +22,9 @@ end
 
 @scores = user_tables.tables.map do |name, table|
   [name, { table: diff_table.diff(table), score: diff_table.score(table) }]
-end.to_h
+end
 
+@scores = Hash[@scores]
 @scores = @scores.sort_by { |name, data| 0 - data[:score] }
 
 puts template.result
