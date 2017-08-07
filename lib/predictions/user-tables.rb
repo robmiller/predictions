@@ -17,7 +17,7 @@ module Predictions
     private
 
     def files
-      Pathname.glob(data_dir / "*.txt")
+      Pathname.glob(data_dir + "*.txt")
     end
 
     def parse(file)
