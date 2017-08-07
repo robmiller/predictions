@@ -23,7 +23,7 @@ module Predictions
     def parse(file)
       File.read(file).lines.each.with_index(1).map do |line, position|
         team, points = line.split("\t").map(&:strip)
-        { position: position, team: team, points: points }
+        { position: position, team: team, points: points.to_i }
       end
     end
 
