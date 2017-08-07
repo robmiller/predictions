@@ -5,9 +5,11 @@ require_relative "lib/predictions"
 # actual_table = Predictions::LeagueTable.new("https://api.football-data.org/v1/competitions/445/leagueTable").table
 actual_table = [{:position=>1, :team=>"Arsenal FC", :points=>0}, {:position=>1, :team=>"Leicester City FC", :points=>0}, {:position=>1, :team=>"Watford FC", :points=>0}, {:position=>1, :team=>"Liverpool FC", :points=>0}, {:position=>1, :team=>"Southampton FC", :points=>0}, {:position=>1, :team=>"Swansea City FC", :points=>0}, {:position=>1, :team=>"Newcastle United FC", :points=>0}, {:position=>1, :team=>"Tottenham Hotspur FC", :points=>0}, {:position=>1, :team=>"Manchester United FC", :points=>0}, {:position=>1, :team=>"West Ham United FC", :points=>0}, {:position=>1, :team=>"Everton FC", :points=>0}, {:position=>1, :team=>"Stoke City FC", :points=>0}, {:position=>1, :team=>"Crystal Palace FC", :points=>0}, {:position=>1, :team=>"Huddersfield Town", :points=>0}, {:position=>1, :team=>"Chelsea FC", :points=>0}, {:position=>1, :team=>"Burnley FC", :points=>0}, {:position=>1, :team=>"Brighton & Hove Albion", :points=>0}, {:position=>1, :team=>"Manchester City FC", :points=>0}, {:position=>1, :team=>"West Bromwich Albion FC", :points=>0}, {:position=>1, :team=>"AFC Bournemouth", :points=>0}]
 
-user_predictions = Predictions::UserTables.new
+diff_table = Predictions::DiffTable.new(actual_table)
 
-user_predictions.each do |name, table|
+user_tables = Predictions::UserTables.new
+
+user_tables.tables.each do |name, table|
   puts name
-  p table
+  p diff_table.diff(table)
 end
