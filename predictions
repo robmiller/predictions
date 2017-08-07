@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative "lib/predictions"
+
+actual_table = Predictions::LeagueTable.new("https://api.football-data.org/v1/competitions/445/leagueTable").table
+
+p actual_table
