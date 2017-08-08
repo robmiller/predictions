@@ -18,7 +18,14 @@ module Predictions
     private
 
     def fetch
-      response = Typhoeus.get(api_url)
+      headers = {}
+      if ENV["FOOTBALL_DATA_API_KEY"]
+        headers["X-Auth-Token"] = ENV["FOOTBALL_DATA_API_KEY"]
+      end
+
+      request = Typhoeus::Request.new(api_url,
+                                      headers: headers)
+      response = request.run
       @json = response.body
     end
 
