@@ -32,7 +32,7 @@ module Predictions
         end
 
         # Normalise team names
-        guessed[:team] = real[:team]
+        guessed[:team] = real[:team].sub(/\s+FC/, "")
 
         guessed[:difference] = (real[:position] - guessed[:position]).abs
         guessed[:points_difference] = (real[:points] - guessed[:points]).abs
