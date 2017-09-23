@@ -25,7 +25,7 @@ end
 end
 
 @scores = Hash[@scores]
-@scores = @scores.sort_by { |name, data| 0 - data[:score] }
+@scores = @scores.sort_by { |name, data| data[:score] }
 
 output_file = ARGV[0]
 
