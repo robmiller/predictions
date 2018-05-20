@@ -41,7 +41,25 @@ module Predictions
     end
 
     def score(other_table)
-      diff(other_table).reduce(0) { |score, p| score + p[:difference] }
+      score = 0
+
+      diff(other_table).each do |position|
+        if position[:points_difference] == 0
+          score -= 1
+        else
+          score += 0.1 * position[:points_difference]
+        end
+
+        if position[:difference] == 0
+          score -= 1
+        elsif position[:difference] == 1
+          # noop
+        else
+          score += 1.2 * position[:difference]
+        end
+      end
+
+      score.round
     end
 
     private
