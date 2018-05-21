@@ -76,6 +76,11 @@
 			<h3><%= name %></h3>
 			<h4><%= data[:score] %> points</h4>
 
+			<p>Correct guesses: <%= data[:table].find_all { |p| p[:difference] == 0 }.length %></p>
+			<p>Guesses within 1 place: <%= data[:table].find_all { |p| p[:difference] <= 1 }.length %></p>
+			<p>Correct points: <%= data[:table].find_all { |p| p[:points_difference] == 0 }.length %></p>
+			<p>Average error: <%= ( data[:table].map { |p| p[:difference] }.sum.to_f / data[:table].length ).round(2) %>
+
 			<table>
 				<thead>
 					<tr>
